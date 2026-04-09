@@ -42,3 +42,16 @@ a {
     color: #007bff;
     font-weight: bold;
 }
+
+.card {
+    background: white;
+    padding: 18px;
+    border-radius: 12px;
+    margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    line-height: 1.6;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
