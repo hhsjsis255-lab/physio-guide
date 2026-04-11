@@ -4,25 +4,31 @@
     <title>Physio Study Guide</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <script>
 function searchFunction() {
     let input = document.getElementById("search").value.toLowerCase();
-    let cards = document.getElementsByClassName("card");
+    let cards = document.querySelectorAll(".card");
 
-    for (let i = 0; i < cards.length; i++) {
-        let text = cards[i].innerText.toLowerCase();
-        cards[i].style.display = text.includes(input) ? "block" : "none";
-    }
+    cards.forEach(card => {
+        if (card.querySelector("h3")) { 
+            let text = card.innerText.toLowerCase();
+            card.style.display = text.includes(input) ? "block" : "none";
+        }
+    });
 }
 </script>
+
 
 <body>
   
   <div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="low-back-pain.html">Low Back Pain</a>
-    <a href="cervical-spondylosis.html">Cervical</a>
-    <a href="knee-osteoarthritis.html">Knee OA</a>
+    <a href="index.html">🏠 Home</a>
+<a href="low-back-pain.html">🦴 Back</a>
+<a href="cervical-spondylosis.html">🧍 Neck</a>
+<a href="knee-osteoarthritis.html">🦵 Knee</a>
+<a href="stroke.html">🧠 Stroke</a>
+
 </div>
 
 <div class="header">
