@@ -19,10 +19,12 @@ body {
 /* Content */
 .container {
     padding: 20px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.85);
     margin: 10px;
     border-radius: 12px;
+    backdrop-filter: blur(5px);
 }
+
 
 
 h1 {
@@ -139,4 +141,20 @@ a:hover {
 }
 h2 {
     margin-top: 20px;
+}
+
+a {
+    display: inline-block;
+    padding: 8px 14px;
+    background: #3498db;
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+a:hover {
+    background: #2c3e50;
+    transform: scale(1.05);
 }
