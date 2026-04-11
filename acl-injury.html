@@ -12,6 +12,7 @@
 <a href="knee-osteoarthritis.html">🦵 Knee</a>
 <a href="stroke.html">🧠 Stroke</a>
 <a href="clinical-concepts.html">📚 Concepts</a>
+<button onclick="toggleDarkMode()" class="dark-btn">🌙</button>
 </div>
 
 
@@ -19,16 +20,21 @@
     Physio Study Guide
 </div>
 
+
+<div class="container">
+
+<h1>ACL Injury Assessment</h1>
+
+
+<img src="images/acl.png" alt="ACL Injury Diagram">
+
+
 <div class="card">
 <h2>Quick Definitions (3 Marks)</h2>
 <p>
 <b>ACL Injury:</b> A tear or sprain of the anterior cruciate ligament causing instability of the knee joint.
 </p>
 </div>
-
-<div class="container">
-
-<h1>ACL Injury Assessment</h1>
 
 <div class="card">
 <h2>Patient Profile</h2>
@@ -203,6 +209,26 @@ positive <span class="highlight">Lachman test</span>, indicating ACL injury.
 <a href="index.html">⬅ Back to Home</a>
 
 </div>
+
+<script>
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+}
+</script>
+
+<script>
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+}
+
+window.onload = function() {
+    if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+    }
+}
+</script>
+
 
 </body>
 </html>

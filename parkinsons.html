@@ -12,6 +12,7 @@
 <a href="knee-osteoarthritis.html">🦵 Knee</a>
 <a href="stroke.html">🧠 Stroke</a>
 <a href="clinical-concepts.html">📚 Concepts</a>
+<button onclick="toggleDarkMode()" class="dark-btn">🌙</button>
 </div>
 
 
@@ -22,6 +23,11 @@
 <div class="container">
 
 <h1>Parkinson’s Disease Assessment</h1>
+
+<h1>Parkinson’s Disease</h1>
+
+<img src="images/parkinson.png" alt="Parkinsons Disease Diagram">
+
 
 <div class="card">
 <h2>Quick Definitions (3 Marks)</h2>
@@ -193,6 +199,27 @@ suggesting Parkinson’s disease.
 <a href="index.html">⬅ Back to Home</a>
 
 </div>
+
+
+<script>
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+}
+</script>
+
+<script>
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+}
+
+window.onload = function() {
+    if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+    }
+}
+</script>
+
 
 </body>
 </html>
