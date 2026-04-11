@@ -4,7 +4,27 @@
     <title>Physio Study Guide</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<script>
+function searchFunction() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let cards = document.getElementsByClassName("card");
+
+    for (let i = 0; i < cards.length; i++) {
+        let text = cards[i].innerText.toLowerCase();
+        cards[i].style.display = text.includes(input) ? "block" : "none";
+    }
+}
+</script>
+
 <body>
+  
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="low-back-pain.html">Low Back Pain</a>
+    <a href="cervical-spondylosis.html">Cervical</a>
+    <a href="knee-osteoarthritis.html">Knee OA</a>
+</div>
+
 <div class="header">
     Physio Study Guide<br>
     <small>Clinical Assessment Made Simple</small>
@@ -33,6 +53,9 @@ reasoning, and diagnosis methods in a structured and practical way.
 <li>Structured learning for physiotherapy students</li>
 </ul>
 </div>
+
+<input type="text" id="search" placeholder="Search condition..." onkeyup="searchFunction()" style="width:100%; padding:10px; margin-bottom:10px;">
+
 <h2>📚 Musculoskeletal Conditions</h2>
 
 <div class="card">
@@ -53,6 +76,25 @@ reasoning, and diagnosis methods in a structured and practical way.
     <a href="knee-osteoarthritis.html">Open</a>
 </div>
 
+<h2>🧠 Neurological Conditions</h2>
+
+<div class="card">
+    <h3>Stroke</h3>
+    <p>Neurological assessment and clinical reasoning</p>
+    <a href="stroke.html">Open</a>
+</div>
+
+<div class="card">
+<h2>How to Use</h2>
+<ul>
+<li>Select a condition</li>
+<li>Read subjective & objective assessment</li>
+<li>Follow step-wise clinical method</li>
+<li>Understand clinical reasoning</li>
+<li>Revise viva & key points</li>
+</ul>
+</div>
+
 
 <p><b>Disclaimer:</b> Educational purpose only.</p>
 
@@ -60,12 +102,22 @@ reasoning, and diagnosis methods in a structured and practical way.
 
 <h2>🚀 Coming Soon</h2>
 
-<div class="card">
-    <p>Stroke Assessment (Neurology)</p>
-</div>
 
 <div class="card">
     <p>Frozen Shoulder Assessment</p>
+</div>
+
+<div class="card">
+<p><b>Made by Ravi | BPT Student</b></p>
+</div>
+
+<div class="card">
+<h2>About This Project</h2>
+<p>
+This platform is designed for physiotherapy students to learn 
+clinical assessment, reasoning, and diagnosis in a structured way.
+It simplifies complex clinical methods into easy step-wise learning.
+</p>
 </div>
 
 </body>
