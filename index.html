@@ -214,6 +214,125 @@ window.onload = function() {
 </script>
 
 
+<!-- CHATBOT BUTTON -->
+<button class="chat-toggle" onclick="toggleChat()">💬</button>
+
+<!-- CHATBOT BOX -->
+<div class="chatbot" id="chatbotBox">
+    <div class="chat-header">
+        Physio Assistant 🤖
+        <span onclick="toggleChat()" class="close-btn">✖</span>
+    </div>
+
+    <div class="chat-body" id="chatBody"></div>
+
+    <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Ask about any condition..." onkeypress="handleKey(event)">
+        <button onclick="startListening()">🎤</button>
+    </div>
+</div>
+
+
+<script>
+// TOGGLE CHAT
+function toggleChat() {
+    let box = document.getElementById("chatbotBox");
+    box.style.display = (box.style.display === "block") ? "none" : "block";
+}
+
+// SPEAK FUNCTION
+function speak(text) {
+    let speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "en-US";
+    window.speechSynthesis.speak(speech);
+}
+
+// SMART RESPONSE ENGINE
+function getResponse(msg) {
+    msg = msg.toLowerCase();
+
+    if (msg.includes("back pain") || msg.includes("lbp"))
+        return "Low Back Pain: Causes include disc, muscle strain, poor posture. Red flags: bladder issues, trauma.";
+
+    if (msg.includes("cervical") || msg.includes("neck"))
+        return "Cervical spondylosis: Neck pain with radiating symptoms. Spurling test is important.";
+
+    if (msg.includes("knee"))
+        return "Knee Osteoarthritis: Pain, stiffness, crepitus. Worse with activity.";
+
+    if (msg.includes("acl"))
+        return "ACL injury: Instability present. Lachman test is most sensitive.";
+
+    if (msg.includes("shoulder") || msg.includes("frozen"))
+        return "Frozen shoulder: Loss of active and passive ROM, especially external rotation.";
+
+    if (msg.includes("stroke"))
+        return "Stroke: Sudden weakness, facial droop, speech loss. Emergency referral required.";
+
+    if (msg.includes("parkinson"))
+        return "Parkinson's: Tremor, rigidity, bradykinesia, postural instability.";
+
+    if (msg.includes("hello") || msg.includes("hi"))
+        return "Hello! I am your Physio Assistant. Ask me anything about conditions.";
+
+    return "I'm still learning. Try asking about LBP, stroke, ACL, or knee.";
+}
+
+// TYPE EFFECT
+function typeEffect(text) {
+    let chatBody = document.getElementById("chatBody");
+    let p = document.createElement("p");
+    chatBody.appendChild(p);
+
+    let i = 0;
+    let interval = setInterval(() => {
+        p.innerHTML = "<b>Bot:</b> " + text.substring(0, i);
+        i++;
+        if (i > text.length) clearInterval(interval);
+    }, 20);
+}
+
+// TEXT INPUT
+function handleKey(e) {
+    if (e.key === "Enter") {
+        let input = document.getElementById("chatInput");
+        let msg = input.value;
+
+        let chatBody = document.getElementById("chatBody");
+        chatBody.innerHTML += "<p><b>You:</b> " + msg + "</p>";
+
+        let response = getResponse(msg);
+        typeEffect(response);
+        speak(response);
+
+        input.value = "";
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+}
+
+// VOICE INPUT
+function startListening() {
+    let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = "en-US";
+
+    recognition.start();
+
+    recognition.onresult = function(event) {
+        let msg = event.results[0][0].transcript;
+
+        let chatBody = document.getElementById("chatBody");
+        chatBody.innerHTML += "<p><b>You:</b> " + msg + "</p>";
+
+        let response = getResponse(msg);
+        typeEffect(response);
+        speak(response);
+
+        chatBody.scrollTop = chatBody.scrollHeight;
+    };
+}
+</script>
+
+
 </body>
 
 </html>
